@@ -6,6 +6,11 @@
             "Description": "Name of S3 Bucket for where Lambda function zip files are uploaded to",
             "Type": "String",
             "MinLength": "3"
+        },
+        "LambdaBucketKey": {
+            "Description": "Name of S3 object for where Lambda function zip files are uploaded to",
+            "Type": "String",
+            "MinLength": "3"
         }
     },
     "Resources": {
@@ -84,7 +89,9 @@
                     "S3Bucket": {
                         "Ref": "LambdaBucketName"
                     },
-                    "S3Key": "union.py.zip"
+                    "S3Key": {
+                        "Ref": "LambdaBucketKey"
+                    }
                 },
                 "Runtime": "python2.7",
                 "Timeout": "90"
